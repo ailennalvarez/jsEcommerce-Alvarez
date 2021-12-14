@@ -52,7 +52,7 @@ for (const productos of agregarFunda) {
                     <p> ${precio}</p>
                     <button class="btn btn-primary" id="btnCarrito"> Ir al carrito !</button>
                 </div>`
-            );
+            ); 
                 $("#btnCarrito").on('click',function(){
                     window.location.href = "carrito.html";
                 });
