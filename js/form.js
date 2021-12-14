@@ -54,13 +54,28 @@ const validacionUsuario = ()=> {
 usuario.onchange = () => {
     validacionUsuario();
 }
+
+
 $("#btn").on('click',function(){
-    $("#mostrarFinal").append(
-                    `<section>
-                    <div>
+    $("#mostrarFinal").prepend(
+                    `<div>
                         <p> Nuestro catalogo con los productos que le interesan le seran enviados a su correo electronico</p>
                         <h4>Gracias por su consulta</h4>
-                    </div>
-                    </section>`);
+                    </div>`
+    );
 });
-              
+
+/*
+    let misDatos ={
+        usuario,
+        mail,
+
+    };
+    //AJAX ENVIO FORMULARIO CON EXITO
+    const URL ="http://localhost:3000/api/formulario";
+    $("#datosPost").on("click", function(){
+        $.post(URL,misDatos,function(){
+            alert("Datos enviados correctamente");
+        })
+    });
+*/

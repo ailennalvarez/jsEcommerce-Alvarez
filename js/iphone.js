@@ -1,10 +1,11 @@
 
 class Iphone{
-    constructor(descripcion,precio,stock){
+    constructor(descripcion,precio,stock,comprar){
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
         this.imagen = imagen;
+        this.comprar = comprar;
     }
     sumaIva(){
         this.precio = this.precio * 1.21;
@@ -15,12 +16,12 @@ class Iphone{
 jQuery(()=>{
 
 const agregarFunda=[
-    {descripcion:"Silicon Rosa",precio:"$500",stock:10,Image:"js/imagenes/siliconcase.png"},
-    {descripcion:"Silicon Verde",precio:"$500",stock:10,Image:"js/imagenes/siliconVerde.PNG"},
-    {descripcion:"Silicon Roja",precio:"$500",stock:10,Image:"js/imagenes/siliconRoja.PNG"},
-    {descripcion:"Rigida Glitter 1",precio:"$1000",stock:10,Image:"js/imagenes/reforzadaGlitterA.PNG"},
-    {descripcion:"Rigida Glitter 2",precio:"$1000",stock:10,Image:"js/imagenes/reforzadaGlitterB.PNG"},
-    {descripcion:"Rigida Glitter 3",precio:"$1000",stock:10,Image:"js/imagenes/reforzadaGlitterC.PNG"},
+    {descripcion:"Silicon Rosa",precio:"$500",stock:10,Image:"js/imagenes/siliconcase.png",comprar:"Lo quiero!"},
+    {descripcion:"Silicon Verde",precio:"$500",stock:10,Image:"js/imagenes/siliconVerde.PNG",comprar:"Lo quiero!"},
+    {descripcion:"Silicon Roja",precio:"$500",stock:10,Image:"js/imagenes/siliconRoja.PNG",comprar:"Lo quiero!"},
+    {descripcion:"Rigida Glitter 1",precio:"$1000",stock:10,Image:"js/imagenes/reforzadaGlitterA.PNG",comprar:"Lo quiero!"},
+    {descripcion:"Rigida Glitter 2",precio:"$1000",stock:10,Image:"js/imagenes/reforzadaGlitterB.PNG",comprar:"Lo quiero!"},
+    {descripcion:"Rigida Glitter 3",precio:"$1000",stock:10,Image:"js/imagenes/reforzadaGlitterC.PNG",comprar:"Lo quiero!"},
 ];
 
 for (const productos of agregarFunda) {
@@ -32,26 +33,13 @@ for (const productos of agregarFunda) {
               <h5 class="card-title"  id="nombreProd"> ${productos.descripcion}</h5>
               <p class="card-text" id="precio">Precio : ${productos.precio}</p>
               <p class="card-text">Cantidad disponible: ${productos.stock}</p>
-              <button class="btn btn-primary agregarCarrito" id="miBoton"> Lo quiero!</button>
+              <button class="btn btn-primary agregarCarrito" id="miBoton">  ${productos.comprar}</button>
             </div>
           </div>`
           
     );
-}
-    /*
-        $("#miBoton").on('click',function(){
-            $("#compras").append(
-                `<div>
-                    <br>
-                    <h1>Tu funda fue agregada al carrito!</h1>
-                    <button class="btn btn-primary" id="btnCarrito"> Ir al carrito !</button>                          
-                </div>`
-                
-            );
-            $("#btnCarrito").on('click',function(){
-                window.location.href = "carrito.html";
-            });
-        });*/
+   }
+    //agregar al carrito
      const agregar = $("#miBoton");
         agregar.on('click',function(){
             let descripcion = $(this).parent().find("#nombreProd").text();
