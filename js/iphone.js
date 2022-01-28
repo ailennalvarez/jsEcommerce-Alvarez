@@ -24,6 +24,7 @@ const agregarFunda=[
     {descripcion:"Rigida Glitter 3",precio:"$1000",stock:10,Image:"js/imagenes/reforzadaGlitterC.PNG",comprar:"Lo quiero!"},
 ];
 
+
 for (const productos of agregarFunda) {
     $("#contenedor-prod").append(
         `<div class="col-sm-4">
@@ -39,40 +40,46 @@ for (const productos of agregarFunda) {
           
     );
    }
-    //agregar al carrito
-     const agregar = $("#miBoton");
-        agregar.on('click',function(){
+    //agregar al carrito 
+    const agregarCarrito = $(".agregarCarrito");
+    agregarCarrito.on('click',function(){
+        //desplazar pagina hacia abajo
+        $('html, body').animate({
+            scrollTop: $("#compras").offset().top
+        }, 1000);
             let descripcion = $(this).parent().find("#nombreProd").text();
             let precio = $(this).parent().find("#precio").text();
             $("#compras").append(
                 `<div>
                     <br>
-                    <h1>Tu funda fue agregada al carrito!</h1>
+                    <h1>DETALLE DE SU PEDIDO:</h1>
                     <p> ${descripcion}</p>
                     <p> ${precio}</p>
                     <button class="btn btn-primary" id="btnCarrito"> Ir al carrito !</button>
                 </div>`
-            ); 
-                $("#btnCarrito").on('click',function(){
-                    window.location.href = "carrito.html";
-                });
-        });
-        //carrito
-            $(".comprasFinal").append(
+            );
+            $("#btnCarrito").on('click',function(){
+                window.location.href = "carrito.html";
+            });
+     });
+
+     
+    //carrito
+        $(".comprasFinal").append(
             `<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-300">
             <div class="toast show carrito" role="alert" aria-live="assertive" aria-atomic="true" >
                 <div class="toast-header">
                     <strong class="me-auto">Su carrito</strong>
-                    <small>En proceso</small>
                     <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
                     <span aria-hidden="true"></span>
                     </button>
                 </div>
                 <div class="toast-body">
-                    <h1> Verifique su email para terminar el proceso </h1>
-                    <h6> Muchas gracias por su compra </h6>
+                    <h1> Su pedido ya fue recibido !</h1>
+                    <p> Verifique su correo electronico para finalizar con la compra !</p>
+                    <h6> Muchas gracias por confiar en nosotros </h6>
                 </div>
-                </div>`
+            </div>`
         );
 });
 
